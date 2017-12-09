@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>csv2geojson</title>
+  <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+  <script src="js/jquery.csv2table.js" type="text/javascript"></script>
 </head>
 <body>
   <h1>csv2geojson</h1>
@@ -11,31 +13,10 @@
     <input type="file" id="csvfile"><br>
     <textarea name="csvdata"></textarea>
   </form><br>
-  <button type="button">アップロード</button><br><br>
-  <!-- csv2table bigin -->
-  <table border="1">
-    <thead>
-      <tr>
-        <th>1</th>
-        <th>2</th>
-        <th>3</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>a</td>
-        <td>b</td>
-        <td>c</td>
-      </tr>
-      <tr>
-        <td>d</td>
-        <td>e</td>
-        <td>f</td>
-      </tr>
-    </tbody>
-  </table>
 
-  <!-- csv2table  end  -->
+<button type="button" class="btn1" onclick ="$('#table').csv2table('sample.csv');">アップロード</button><br><br>
+<div id="table"></div>
+
   <button type="button">変換する</button><br><br>
 
   <form name="export">
@@ -45,10 +26,8 @@
 
   <button type="button">ダウンロードする</button><br><br>
 
-
   <script>
     var obj1 = document.getElementById("csvfile");
-
     //ダイアログでファイルが選択された時
     obj1.addEventListener("change",function(evt){
       var file = evt.target.files;
@@ -63,5 +42,29 @@
       }
     },false);
   </script>
+
+<!--   <script>
+    document.getElementById( "csvfile" ).onchange = function () {
+      document.getElementById( "btnup" ).textContent = "" ;//新しい画像を読み込んだら前の画像を消す
+
+      objectUrls = [] ;
+
+      var fileList = this.files ;
+      var objectUrl = URL.createObjectURL( fileList[0]) ;
+
+      var url1 = objectUrl.substr( 0, 5 );
+      var url2 = objectUrl.substr( 13 );
+      var url = url1 + url2
+
+      appendHTML('<button type="button" name="up" class="btn1" onclick ="$("#table").csv2table('+ 'sample.csv' + ');"">アップロード</button><br><br>  <div id="table"></div>') ;
+    }
+// url + ".csv"
+
+    function appendHTML ( html ) {
+      document.getElementById( "btnup" ).innerHTML += html ;
+    }
+
+    var objectUrls = [] ;
+  </script> -->
 </body>
 </html>

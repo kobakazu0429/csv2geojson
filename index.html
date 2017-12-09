@@ -6,5 +6,43 @@
   <title>csv2geojson</title>
 </head>
 <body>
+  <h1>csv2geojson</h1>
+  <form name="import">
+    <input type="file" name="csvfile"><br>
+    <textarea name="csvdata"></textarea>
+  </form><br>
+  <button type="button">アップロード</button><br><br>
+<!-- csv2table bigin -->
+<table border="1">
+  <thead>
+    <tr>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a</td>
+      <td>b</td>
+      <td>c</td>
+    </tr>
+    <tr>
+      <td>d</td>
+      <td>e</td>
+      <td>f</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- csv2table  end  -->
+  <button type="button">変換する</button><br><br>
+
+  <form name="export">
+  <textarea name="geojson" readonly></textarea><br>
+  <button type="button">コピーする</button>
+  </form><br>
+
+  <button type="button">ダウンロードする</button><br><br>
 </body>
 </html>

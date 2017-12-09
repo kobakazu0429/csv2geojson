@@ -8,41 +8,60 @@
 <body>
   <h1>csv2geojson</h1>
   <form name="import">
-    <input type="file" name="csvfile"><br>
+    <input type="file" id="csvfile"><br>
     <textarea name="csvdata"></textarea>
   </form><br>
   <button type="button">アップロード</button><br><br>
-<!-- csv2table bigin -->
-<table border="1">
-  <thead>
-    <tr>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>a</td>
-      <td>b</td>
-      <td>c</td>
-    </tr>
-    <tr>
-      <td>d</td>
-      <td>e</td>
-      <td>f</td>
-    </tr>
-  </tbody>
-</table>
+  <!-- csv2table bigin -->
+  <table border="1">
+    <thead>
+      <tr>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>a</td>
+        <td>b</td>
+        <td>c</td>
+      </tr>
+      <tr>
+        <td>d</td>
+        <td>e</td>
+        <td>f</td>
+      </tr>
+    </tbody>
+  </table>
 
-<!-- csv2table  end  -->
+  <!-- csv2table  end  -->
   <button type="button">変換する</button><br><br>
 
   <form name="export">
-  <textarea name="geojson" readonly></textarea><br>
-  <button type="button">コピーする</button>
+    <textarea name="geojson" readonly></textarea><br>
+    <button type="button">コピーする</button>
   </form><br>
 
   <button type="button">ダウンロードする</button><br><br>
+
+
+  <script>
+    var obj1 = document.getElementById("csvfile");
+
+    //ダイアログでファイルが選択された時
+    obj1.addEventListener("change",function(evt){
+      var file = evt.target.files;
+      //FileReaderの作成
+      var reader = new FileReader();
+      //テキスト形式で読み込む
+      reader.readAsText(file[0]);
+      //読込終了後の処理
+      reader.onload = function(ev){
+        //テキストエリアに表示する
+        document.export.geojson.value = reader.result;
+      }
+    },false);
+  </script>
 </body>
 </html>

@@ -14,7 +14,7 @@
     <textarea name="csvdata"></textarea>
   </form><br>
 
-<button type="button" class="btn1" onclick ="$('#table').csv2table('sample.csv');">アップロード</button><br><br>
+<div id="btnup"></div>
 <div id="table"></div>
 
   <button type="button">変換する</button><br><br>
@@ -43,7 +43,7 @@
     },false);
   </script>
 
-<!--   <script>
+  <script>
     document.getElementById( "csvfile" ).onchange = function () {
       document.getElementById( "btnup" ).textContent = "" ;//新しい画像を読み込んだら前の画像を消す
 
@@ -52,19 +52,29 @@
       var fileList = this.files ;
       var objectUrl = URL.createObjectURL( fileList[0]) ;
 
-      var url1 = objectUrl.substr( 0, 5 );
-      var url2 = objectUrl.substr( 13 );
-      var url = url1 + url2
+      console.log(objectUrl);
 
-      appendHTML('<button type="button" name="up" class="btn1" onclick ="$("#table").csv2table('+ 'sample.csv' + ');"">アップロード</button><br><br>  <div id="table"></div>') ;
+      // var url1 = "file:///"
+      // // var url1 = objectUrl.substr( 0, 5 );
+      // var url2 = objectUrl.substr( 13 );
+      // var url3 = ".csv";
+      // var url = url1 + url2 + url3;
+
+      var data1 = '<button type="button" name="up" class="btn1" onclick ="$(';
+      var data2 = "'#table').csv2table('";
+      var data3 = "'";
+      var data4 = ');">アップロード</button><br><br>';
+      var data  = data1 + data2 + objectUrl+ ".csv" + data3 + data4;
+      console.log(data);
+      appendHTML(data);
     }
-// url + ".csv"
+    // url + ".csv"
 
     function appendHTML ( html ) {
       document.getElementById( "btnup" ).innerHTML += html ;
     }
 
     var objectUrls = [] ;
-  </script> -->
+  </script>
 </body>
 </html>

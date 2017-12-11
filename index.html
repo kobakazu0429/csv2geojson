@@ -19,9 +19,9 @@
   <form name="import">
     <label>上下のテキストエリアにデータがある場合は下のエリアが優先されます</label><br>
     <input type="file" id="csvfile"><br>
-    <textarea id="csvfiledata"></textarea><br>
+    <textarea id="csvfiledata" spellcheck="false"></textarea><br>
     <label>もしくは、直接入力してください</label><br>
-    <textarea id="csvdata"></textarea><br>
+    <textarea id="csvdata" spellcheck="false"></textarea><br>
   </form><br>
 
   <button type="button" id="cfm">確認する</button><br><br>
@@ -32,7 +32,7 @@
   <button type="button" id="convert">変換する</button><br><br>
 
   <form name="export">
-    <textarea id="geojson"></textarea><br>
+    <textarea id="geojson" readonly spellcheck="false"></textarea><br>
     <button type="button" id="copy">コピーする</button>
   </form><br>
 

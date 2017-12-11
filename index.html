@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>csv2geojson</title>
   <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
-  <!-- <script src="js/jquery.csv2table.js" type="text/javascript"></script> -->
   <script src="js/jquery.csv.min.js"></script>
+
   <style>
     textarea {
       width: 550px;
@@ -19,7 +19,7 @@
   <form name="import">
     <label>上下のテキストエリアにデータがある場合は下のエリアが優先されます</label><br>
     <input type="file" id="csvfile"><br>
-    <textarea id="csvfiledata" spellcheck="false"></textarea><br>
+    <textarea id="csvfiledata" name="csvfiledata" spellcheck="false">Put CSV here.</textarea><br>
     <label>もしくは、直接入力してください</label><br>
     <textarea id="csvdata" spellcheck="false"></textarea><br>
   </form><br>
@@ -29,6 +29,7 @@
     <table id="result2" border="1"></table>
   </div>
 
+  <label><input type="checkbox" id="beauty">Beauty Print?</label><br /><br />
   <button type="button" id="convert">変換する</button><br><br>
 
   <form name="export">
@@ -130,5 +131,8 @@
       alert('コピーしました');
     });
   </script>
+  <script src="js/libs/geojson.min.js"></script>
+  <script src="js/libs/CsvToJson.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

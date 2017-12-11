@@ -32,8 +32,8 @@
   <button type="button" id="convert">変換する</button><br><br>
 
   <form name="export">
-    <textarea name="geojson" readonly></textarea><br>
-    <button type="button">コピーする</button>
+    <textarea id="geojson"></textarea><br>
+    <button type="button" id="copy">コピーする</button>
   </form><br>
 
   <button type="button">ダウンロードする</button><br><br>
@@ -121,6 +121,14 @@
 
       return html;
     }
+  </script>
+  <script>
+    $('#copy').bind('click', function() {
+      var geojsoncopy = document.getElementById("geojson");
+      geojsoncopy.select();
+      document.execCommand("copy");
+      alert('コピーしました');
+    });
   </script>
 </body>
 </html>

@@ -41,96 +41,9 @@
 
 
 
-  <script>
-    var obj1 = document.getElementById("csvfile");
-    //ダイアログでファイルが選択された時
-    obj1.addEventListener("change",function(evt){
-      var file = evt.target.files;
-      //FileReaderの作成
-      var reader = new FileReader();
-      //テキスト形式で読み込む
-      reader.readAsText(file[0]);
-      //読込終了後の処理
-      reader.onload = function(ev){
-        //テキストエリアに表示する
-        document.import.csvfiledata.value = reader.result;
-        csv2table();//それぞれの関数の実行
-      }
-    },false);
-  </script>
-  <script>
-    // String.prototype.trim = function() {
-    //   return this.replace(/^\s+|\s+$/g,"");
-    // }
-
-      $('#cfm').bind('click', function() {
-        csv2table();//それぞれの関数の実行
-      });
-
-    function csv2table() {
-      if (document.getElementById("csvfiledata").value != "" && document.getElementById("csvdata").value != "") {
-        input = $("#csvdata").val();
-      } else if (document.getElementById("csvfiledata").value != "" && document.getElementById("csvdata").value == "") {
-        input = $("#csvfiledata").val();
-      } else if (document.getElementById("csvfiledata").value == "" && document.getElementById("csvdata").value != "") {
-        input = $("#csvdata").val();
-      } else {
-        return null;
-      }
-
-      var data = $.csv.toArrays(input);
-      var html = generateTable(data);
-      $('#result2').empty();
-      $('#result2').html(html);
-    }
-
-    // build HTML table data from an array (one or two dimensional)
-    function generateTable(data) {
-      var html = '';
-
-      if(typeof(data[0]) === 'undefined') {
-        return null;
-      }
-
-      if(data[0].constructor === String) {
-        html += '<tr>\r\n';
-        for(var item in data) {
-          html += '<td>' + data[item] + '</td>\r\n';
-        }
-        html += '</tr>\r\n';
-      }
-
-      if(data[0].constructor === Array) {
-        for(var row in data) {
-          html += '<tr>\r\n';
-          for(var item in data[row]) {
-            html += '<td>' + data[row][item] + '</td>\r\n';
-          }
-          html += '</tr>\r\n';
-        }
-      }
-
-      if(data[0].constructor === Object) {
-        for(var row in data) {
-          html += '<tr>\r\n';
-          for(var item in data[row]) {
-            html += '<td>' + item + ':' + data[row][item] + '</td>\r\n';
-          }
-          html += '</tr>\r\n';
-        }
-      }
-
-      return html;
-    }
-  </script>
-  <script>
-    $('#copy').bind('click', function() {
-      var geojsoncopy = document.getElementById("geojson");
-      geojsoncopy.select();
-      document.execCommand("copy");
-      alert('コピーしました');
-    });
-  </script>
+  <script src="js/readcsv.js"></script>
+  <script src="js/csv2table.js"></script>
+  <script src="js/copy.js"></script>
   <script src="js/libs/geojson.min.js"></script>
   <script src="js/libs/CsvToJson.js"></script>
   <script src="js/app.js"></script>

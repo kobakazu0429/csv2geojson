@@ -29,7 +29,6 @@
     <table id="result2" border="1"></table>
   </div>
 
-
   <button type="button" id="convert">変換する</button><br><br>
 
   <form name="export">
@@ -59,24 +58,25 @@
     },false);
   </script>
   <script>
+    // String.prototype.trim = function() {
+    //   return this.replace(/^\s+|\s+$/g,"");
+    // }
+
       $('#cfm').bind('click', function() {
         csv2table();//それぞれの関数の実行
       });
 
     function csv2table() {
+      if (document.getElementById("csvfiledata").value != "" && document.getElementById("csvdata").value != "") {
+        input = $("#csvdata").val();
+      } else if (document.getElementById("csvfiledata").value != "" && document.getElementById("csvdata").value == "") {
+        input = $("#csvfiledata").val();
+      } else if (document.getElementById("csvfiledata").value == "" && document.getElementById("csvdata").value != "") {
+        input = $("#csvdata").val();
+      } else {
+        return null;
+      }
 
-      // var state = null;
-      // if (document.getElementById("csvfiledata").value != "" && document.getElementById("csvdata").value != "") {
-      //   state = "#'csvdata'";
-      // } else if ($('#csvfiledata') == true && $('#csvdata') == false) {
-      //   state = "'#csvfiledata'";
-      // } else if ($('#csvfiledata') == false && $('#csvdata') == true) {
-      //   state = "'#csvdata'";
-      // } else {
-      //   return null;
-      // }
-
-      var input = $(csvfiledata).val();
       var data = $.csv.toArrays(input);
       var html = generateTable(data);
       $('#result2').empty();

@@ -32,13 +32,15 @@
   <label><input type="checkbox" id="beauty">Beauty Print?</label><br /><br />
   <button type="button" id="convert">変換する</button><br><br>
 
-  <form name="export">
-    <textarea id="geojson" readonly spellcheck="false"></textarea><br>
+  <form id="export" method="post" action="https://api.github.com/gists">
+    <textarea id="geojson" spellcheck="false"></textarea><br>
+    <button type="submit" id="check">geojson.ioで確認する(外部サイトへ飛びます)</button><br>
     <button type="button" id="copy">コピーする</button>
   </form><br>
 
   <button type="button" id="download">ダウンロードする</button><br><br>
 
+  <script src="js/gist-geojsonio.js"></script>
   <script src="js/readcsv.js"></script>
   <script src="js/csv2table.js"></script>
   <script src="js/copy.js"></script>

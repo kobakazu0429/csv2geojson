@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>csv2geojson</title>
+  <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+  <script src="js/jquery.csv.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <!-- <link rel="css/bootstrap-reboot.min.css">
+  <link rel="css/bootstrap-grid.min.css">
+  <link rel="css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <style>
+    html, body {
+      margin: 0 20px;
+      /*margin: 20px;*/
+      background-color: #E7EBE3;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+    }
+/*    form {
+      width: auto;
+    }*/
+    .jumbotron {
+      background-color: white;
+      padding-top: 10px;
+/*      width: 100%;*/
+    }
+    .title {
+      padding-bottom: 0;
+      background-color: #E7EBE3;/*とりあえず*/
+    }
+    .btn-primary{
+      background-color: #3C7FF0
+    }
+  </style>
+</head>
+<body>
+  <div class="jumbotron title"><!-- Title begin -->
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>csv2geojson</h1>
+      </div>
+    </div>
+  </div><!-- Title end -->
+
+  <div class="jumbotron"><!-- import begin -->
+    <form name="import">
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <label>ファイルを選択するか、直接入力してください</label><br><br>
+          <input type="file" class="form-control-file" id="csvfile">
+          <textarea class="form-control" id="csvdata" spellcheck="false">Put CSV here.</textarea>
+        </div>
+      </div>
+    </form>
+  </div><!-- import end -->
+
+  <div class="jumbotron"><!-- csv to table begin -->
+    <button type="button" id="cfm" class="btn btn-primary btn-lg btn-block">確認する</button><br>
+    <div class="col-sm-12">
+      <div class="result">
+        <table id="result2" border="1"></table>
+      </div>
+    </div>
+  </div><!-- csv to table end -->
+
+  <div class="jumbotron"><!-- conert begin -->
+    <form name="convert">
+      <div class="form-group row">
+        <div class="col-sm-12">
+           <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" id="beauty" checked="checked">Beauty Print?
+          </label><br>
+          <button type="button" id="convert" class="btn btn-primary btn-lg btn-block">変換する</button><br>
+          <textarea class="form-control" id="geojson" spellcheck="false"></textarea><br>
+        </div>
+      </div>
+    </form>
+  </div><!-- convert end -->
+
+  <div class="jumbotron"><!-- result begin -->
+    <form id="export">
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <button type="button" id="gist" class="btn btn-primary btn-lg btn-block">gistに保存する</button>
+        </div>
+        <div class="col-sm-6">
+          <button type="button" id="io" class="btn btn-primary btn-lg btn-block">geojson.ioで確認する(外部サイトへ飛びます)</button><br>
+        </div>
+        <div class="col-sm-12">
+          <button type="button" id="copy" class="btn btn-primary btn-lg btn-block">コピーする</button><br>
+          <button type="button" id="download" class="btn btn-primary btn-lg btn-block">ダウンロードする</button><br><br>
+        </div>
+      </div>
+    </form>
+  </div><!-- result end -->
+
+  <script src="js/gist-geojsonio-test.js"></script>
+  <!-- <script src="js/gist-geojsonio.js"></script> -->
+  <script src="js/readcsv.js"></script>
+  <script src="js/csv2table.js"></script>
+  <script src="js/copy.js"></script>
+  <script src="js/libs/geojson.min.js"></script>
+  <script src="js/libs/CsvToJson.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/download.js"></script>
+</body>
+</html>

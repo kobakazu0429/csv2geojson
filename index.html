@@ -29,6 +29,8 @@ width: auto;
 .jumbotron {
   background-color: white;
   padding-top: 10px;
+  padding-bottom: 5px;
+  /*margin-bottom: 15px;*/
   /*      width: 100%;*/
 }
 .title {
@@ -95,11 +97,27 @@ width: auto;
         </div>
         <div class="col-sm-12">
           <button type="button" id="copy" class="btn btn-primary btn-lg btn-block">コピーする</button><br>
-          <button type="button" id="download" class="btn btn-primary btn-lg btn-block">ダウンロードする</button><br><br>
+          <button type="button" id="download" class="btn btn-primary btn-lg btn-block">ダウンロードする</button>
         </div>
       </div>
     </form>
   </div><!-- result end -->
+
+    <div class="jumbotron"><!-- etc begin -->
+    <form method="post" action="https://api.github.com/gists" name="export">
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.open('https://github.com/kobakazu10/csv2geojson')">GitHub</button>
+        </div>
+        <div class="col-sm-6">
+          <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.open('https://docs.google.com/forms/d/1S9YRac-aKVZlJcUwqh_CzlaZwuHWiTTppcY0eM3U5UQ/viewform?edit_requested=true')">アンケート</button><br>
+        </div>
+<!--         <div class="col-sm-4">
+          <button type="button" class="btn btn-primary btn-lg btn-block"></button><br>
+        </div> -->
+      </div>
+    </form>
+  </div><!-- etc end -->
 
   <!-- <script src="js/gist-geojsonio.js"></script> -->
   <script src="js/readcsv.js"></script>

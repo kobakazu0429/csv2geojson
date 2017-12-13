@@ -85,13 +85,13 @@
   </div><!-- convert end -->
 
   <div class="jumbotron"><!-- result begin -->
-    <form id="export">
+    <form method="post" action="https://api.github.com/gists" name="export">
       <div class="form-group row">
         <div class="col-sm-6">
-          <button type="button" id="gist" class="btn btn-primary btn-lg btn-block">gistに保存する</button>
+          <button type="submit" id="gist" class="btn btn-primary btn-lg btn-block">gistに保存する</button>
         </div>
         <div class="col-sm-6">
-          <button type="button" id="io" class="btn btn-primary btn-lg btn-block">geojson.ioで確認する(外部サイトへ飛びます)</button><br>
+          <button type="submit" id="io" class="btn btn-primary btn-lg btn-block">geojson.ioで確認する(外部サイトへ飛びます)</button><br>
         </div>
         <div class="col-sm-12">
           <button type="button" id="copy" class="btn btn-primary btn-lg btn-block">コピーする</button><br>
@@ -101,7 +101,7 @@
     </form>
   </div><!-- result end -->
 
-  <script src="js/gist-geojsonio-test.js"></script>
+
   <!-- <script src="js/gist-geojsonio.js"></script> -->
   <script src="js/readcsv.js"></script>
   <script src="js/csv2table.js"></script>
@@ -109,6 +109,7 @@
   <script src="js/libs/geojson.min.js"></script>
   <script src="js/libs/CsvToJson.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/gist-geojsonio-test.js"></script>
   <script src="js/download.js"></script>
 </body>
 </html>

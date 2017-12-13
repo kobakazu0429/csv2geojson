@@ -1,6 +1,17 @@
-(function (win, doc) {
+$('#gist').bind('click', function() {
+  gistsave(this,this.document,'gist');
+  // console.log(gistUrl);
+});
+
+$('#io').bind('click', function() {
+  gistsave(this,this.document,'io');
+});
+
+function gistsave(win, doc, btnid) {
+  console.log("push");
   // Find form elements.
-  var forms = doc.querySelectorAll('#export');
+  var forms = document.querySelectorAll('form[method="post"]');
+  console.log(forms);
   // Prevent submit, do an xhr instead.
   forms.forEach(function(form) {
     form.addEventListener('submit', function (e) {
@@ -25,10 +36,14 @@
       xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
       xhr.onload = function(e) {
         var gistUrl = JSON.parse(e.target.response).html_url;
-        var geojsoniourl = 'http://geojson.io/#id=gist:' + gistUrl.replace('https://gist.github.com', 'anonymous')
-        document.location = geojsoniourl;
+        var geojsoniourl = 'http://geojson.io/#id=gist:' + gistUrl.replace('https://gist.github.com', 'anonymous');
+        if (btnid === 'gist') {
+          document.location = gistUrl;
+        } else {
+          document.location = geojsoniourl;
+        }
       };
       xhr.send(JSON.stringify(data));
     }, false);
   });
-})(this, this.document);
+}

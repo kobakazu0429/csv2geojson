@@ -1,4 +1,4 @@
-var obj1 = document.getElementById("csvfile");
+var obj1 = document.getElementById('csvfile');
 //ダイアログでファイルが選択された時
 obj1.addEventListener("change",function(evt){
   var file = evt.target.files;
@@ -9,7 +9,7 @@ obj1.addEventListener("change",function(evt){
   //読込終了後の処理
   reader.onload = function(ev){
     //テキストエリアに表示する
-    document.import.csvfiledata.value = reader.result;
+    document.import.csvdata.value = reader.result;
     csv2table();//それぞれの関数の実行
   }
 },false);

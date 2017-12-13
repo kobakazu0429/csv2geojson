@@ -1,25 +1,16 @@
 /*global CSVToArray, GeoJSON */
-var csvTextArea;
-var convertButton = document.getElementById('convert');
-var resultTextArea = document.getElementById('geojson');
-var beauty = document.getElementById('beauty');
+var csvTextArea     = document.getElementById("csvdata");
+var convertButton   = document.getElementById("convert");
+var resultTextArea  = document.getElementById("geojson");
+var beauty          = document.getElementById("beauty");
 
-// csvTextArea.addEventListener('click', function() {
-//   if (this.value === 'Put CSV here.') {
-//     this.value = '';
-//   }
-// });
+csvTextArea.addEventListener('click', function() {
+  if (this.value === 'Put CSV here.') {
+    this.value = '';
+  }
+});
 
 convertButton.addEventListener('click', function() {
-  if (document.getElementById("csvfiledata").value != "" && document.getElementById("csvdata").value != "") {
-    csvTextArea = document.getElementById('csvdata');
-  } else if (document.getElementById("csvfiledata").value != "" && document.getElementById("csvdata").value == "") {
-    csvTextArea = document.getElementById('csvfiledata');
-  } else if (document.getElementById("csvfiledata").value == "" && document.getElementById("csvdata").value != "") {
-    csvTextArea = document.getElementById('csvdata');
-  } else {
-    csvTextArea = "";
-  }
   var csvObject = CSVToArray(csvTextArea.value.trim());
   var latName = getColName(csvObject, ['lat', 'Lat', 'LAT', 'latitude', 'Latitude', 'LATITUDE', '緯度']);
   var lonName = getColName(csvObject, ['lng', 'Lng', 'LNG', 'lon', 'Lon', 'LON', 'longitude', 'Longitude', 'LONGITUDE', '経度']);
@@ -28,7 +19,6 @@ convertButton.addEventListener('click', function() {
     Point: [latName, lonName]
   }, function(geojson) {
     var result = JSON.stringify(geojson, null, beauty.checked ? 2 : undefined);
-
     resultTextArea.value = result;
   });
 });

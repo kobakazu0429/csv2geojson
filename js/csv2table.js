@@ -3,16 +3,7 @@ $('#cfm').bind('click', function() {
 });
 
 function csv2table() {
-  if (document.getElementById("csvfiledata").value != "" && document.getElementById("csvdata").value != "") {
-    input = $("#csvdata").val();
-  } else if (document.getElementById("csvfiledata").value != "" && document.getElementById("csvdata").value == "") {
-    input = $("#csvfiledata").val();
-  } else if (document.getElementById("csvfiledata").value == "" && document.getElementById("csvdata").value != "") {
-    input = $("#csvdata").val();
-  } else {
-    return null;
-  }
-
+  var input = $('#csvdata').val();
   data = $.csv.toArrays(input);
   var html = generateTable(data);
   $('#result2').empty();
